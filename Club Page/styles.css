@@ -1,0 +1,144 @@
+html,
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  background-color: #FF5F5D;
+  text-align: center;
+}
+a {
+    color: #747E7E;
+  }
+  
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+    padding: 10px;
+  }
+
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+  height: 2.5rem;
+  padding-top: 1rem;
+  background-color: #00CCBF;
+  width: 100rem;
+  display: block;
+}
+  
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 10%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  .navbar p {
+    display: inline-block;
+    padding: 10px 10px;
+  }
+  .main {
+    padding-top: 35px;
+    opacity: 0.9;
+  }
+
+  .club-name{
+  display: flex;
+  height: 300px;
+  padding-top: 35px;
+  }
+
+  .club-name .content{
+  margin: auto;
+  background-color: #72F2EB;
+  width: 100%;
+  }
+
+  .container {
+    padding-top: 70px;
+    padding-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+.description h2{
+    color:#00CCBF;
+}
+.description p a{
+color: #00CCBF;
+cursor: pointer;
+}
+.gallery{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.gallery img {
+  display: block;
+  width: 30%;
+  margin: 1.5%;
+  float: left;
+  }
+  
+  .quote {
+    background-color: #3F7C85;
+    height: 20rem;
+    padding: 0 1rem;
+    color: #72F2EB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .quote h1 {
+  font-size: 2.5rem;
+  }
+
+  .moto{
+    height: 20rem;
+    padding: 0 1rem;
+    color: #72F2EB;
+    text-align: center;
+    margin-bottom: 17rem;
+  }
+  .moto img{
+  width: 30%;
+  }
+  .moto h1 {
+    font-size: 2.5rem;
+    }
+        footer {
+            background-color: #00CCBF;
+            padding-top: 0 1rem;
+          }
+
+          footer .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 5em;
+            color: white;
+          }
+
+          @media only screen and (max-width: 960px){
+            .main{
+              padding-top: 1rem;
+            }
+            }
+            @media only screen and (max-width: 700px){
+              .description img{
+                display: none;
+              }
+            }
+            @media only screen and (max-width: 470px){
+              h1{
+                font-size: 2rem;
+              }
+              .gallery img{
+                margin: 0;
+              }
+            }
