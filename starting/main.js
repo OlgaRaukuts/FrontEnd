@@ -14,46 +14,68 @@ class Field {
   }
 
 playGame(){
-  let currentlyPlaying = true;
+  let playing = true;
   let moveSelection;
-  while(currentlyPlaying){
-    console.log(this.print);
-    moveSelection = prompt("Please make a move. (Up = 'u' Down = 'd' Left = 'l' Right = 'r'");
-    if(moveSelection === 'u' && this.y !== 0){
-      this.y--;
-    }else if(moveSelection === 'u' && this.y === 0){
-      console.log('You are outside the game field');
-    }else if(moveSelection === 'd' && this.y !== (height - 1)){
-      this.y++;
-    }else if(moveSelection === 'd' && this.y === (height - 1)){
-      console.log('You are outside the game field');
-    }else if(moveSelection === 'l' && this.x !==0){
-      this.x--;
-    }else if(moveSelection === 'l' && this.x ===0){
-      console.log('You are outside the game field');
-    }else if(moveSelection === 'r' && this.x !== (width - 1)){
-      this.x++;
-  }else if(moveSelection === 'r' && this.x === (width - 1)){
-      console.log('You are outside the game field');
-}else {
-        console.log('Invalid Entry');
-      }
-
-if(this.field[this.x][this.y] === hat){
-  console.log("You win!");
-        currentlyPlaying = false;
+  while(playing){
+    this.print();
+    this.askQuestion();
+      if (!this.isInBounds()) {
+        console.log('Out of bounds instruction!');
+        playing = false;
         break;
-} else if(this.field[this.x][this.y] === hole){
-  console.log("You lose!");
-        currentlyPlaying = false;
+      } else if (this.isHole()) {
+        console.log('Sorry, you fell down a hole!');
+        playing = false;
         break;
-}else {
-        this.field[this.y][this.x] = pathCharacter;
-        console.log(this.print());
+      } else if (this.isHat()) {
+        console.log('Congrats, you found your hat!');
+        playing = false;
+        break;
       }
+      // Update the current location on the map
+      this.field[this.y][this.x] = pathCharacter ;
+  }
+  }
+ askQuestion() {
+    const answer = prompt('Which way? ').toUpperCase();
+    switch (answer) {
+      case 'U':
+        this.y -= 1;
+        break;
+      case 'D':
+        this.y += 1;
+        break;
+      case 'L':
+        this.x -= 1;
+        break;
+      case 'R':
+        this.x += 1;
+        break;
+      default:
+        console.log('Enter U, D, L or R.');
+        this.askQuestion();
+        break;
+    }
   }
 
-}
+  isInBounds() {
+    return (
+      this.y >= 0 &&
+      this.x >= 0 &&
+      this.y < this.field.length &&
+      this.x < this.field[0].length
+    );
+  }
+
+  isHat() {
+    return this.field[this.y][this.x] === hat;
+  }
+
+  isHole() {
+    return this.field[this.y][this.x] === hole;
+  }
+
+
 print(){
   const displayString = this.field.map(row => {
         return row.join('');
@@ -62,25 +84,30 @@ print(){
     }
 
 static generateField(height, width) {
-    const field = new Array(height).fill(0).map(el => new Array(width));
+  let field = [];
+
     for (let y = 0; y < height; y++) {
+      field[y] = [];
       for (let x = 0; x < width; x++) {
-        const randomArray = Math.random();
-        field[y][x];
+        field[y][x] = fieldCharacter;
       }
     }
+
     const hatLocation = {
       x: Math.floor(Math.random() * width),
       y: Math.floor(Math.random() * height)
     };
-
-    while (hatLocation.x === 0 && hatLocation.y === 0) {
+     while (hatLocation.x === 0 && hatLocation.y === 0) {
       hatLocation.x = Math.floor(Math.random() * width);
       hatLocation.y = Math.floor(Math.random() * height);
     }
-    field[hatLocation.y][hatLocation.x] = hat;
+
+ field[hatLocation.y][hatLocation.x] = hat;
+
     return field;
   }
+
+
 
 
 
@@ -88,6 +115,8 @@ static generateField(height, width) {
 
 
 
-const myfield = new Field(Field.generateField(10, 10));
-myfield.playGame();
 
+
+const myfield = new Field(Field.generateField(2, 5));
+//myfield.print();
+myfield.playGame();
