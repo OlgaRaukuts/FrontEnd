@@ -15,7 +15,6 @@ class Field {
 
 playGame(){
   let playing = true;
-  let moveSelection;
   while(playing){
     this.print();
     this.askQuestion();
@@ -103,6 +102,18 @@ static generateField(height, width) {
     }
 
  field[hatLocation.y][hatLocation.x] = hat;
+
+ //set holes location
+ const holesLocation = {
+  x: Math.floor(Math.random() * width),
+  y: Math.floor(Math.random() * height)
+}
+while (holesLocation.x === 0 && holesLocation.y === 0) {
+  holesLocation.x = Math.floor(Math.random() * width);
+  holesLocation.y = Math.floor(Math.random() * height);
+}
+
+field[holesLocation.y][holesLocation.x] = hole;
 
     return field;
   }
