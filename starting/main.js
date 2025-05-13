@@ -103,7 +103,7 @@ static generateField(height, width) {
 
  field[hatLocation.y][hatLocation.x] = hat;
 
- //set holes location
+ //set holes location  //let randomIndex = Math.floor(Math.random() * 5);
  const holesLocation = {
   x: Math.floor(Math.random() * width),
   y: Math.floor(Math.random() * height)
