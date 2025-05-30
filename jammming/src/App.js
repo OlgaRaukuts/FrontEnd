@@ -1,7 +1,8 @@
 //import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import Tracklist from '../src/components/Tracklist/Tracklist';
+import React, {useState} from 'react';
+import SearchResults from './components/SearchResults/SearchResults'
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   const tracks = [
@@ -24,10 +25,20 @@ function App() {
         album: "Immortal"
     }]
 
+    const [searchTerm, setSearchTerm] = useState('');
+
+  // Filter tracks based on search term
+  const filteredTracks = tracks.filter(track =>
+    track.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    track.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    track.album.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Jammming</h1>
-      <Tracklist tracks={tracks} />
+      <SearchBar onSearch={setSearchTerm}/>
+      <SearchResults tracks={tracks} />
     </div>
   );
 }
