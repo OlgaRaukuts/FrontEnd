@@ -1,23 +1,17 @@
+ import React from 'react';
+ import styles from './Track.module.css';
+ 
+ function Track({track}){
 
-export const tracks = [
-{
-    name: "Beliver",
-    id: 332323324,
-    artist: "Imagine Dragons",
-    album: "Beliver"
-},
-{
-    name: "In the end",
-    id: 3323433324,
-    artist: "Linkin Park",
-    album: "In the end"
-},
-{
-    name: "Immortal",
-    id: 33234113324,
-    artist: "Evanescence",
-    album: "Immortal"
+
+            return (
+    <div style={{ marginBottom: '1rem' }}>
+      <p><strong>{track.name}</strong></p>
+      <p>{track.artist} | {track.album}</p>
+    </div>
+  );
 }
-]
 
 
+ export default Track;
+ 

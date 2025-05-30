@@ -4,16 +4,30 @@ import React from 'react';
 import Tracklist from '../src/components/Tracklist/Tracklist';
 
 function App() {
+  const tracks = [
+    {
+        name: "Beliver",
+        id: 332323324,
+        artist: "Imagine Dragons",
+        album: "Beliver"
+    },
+    {
+        name: "In the end",
+        id: 3323433324,
+        artist: "Linkin Park",
+        album: "In the end"
+    },
+    {
+        name: "Immortal",
+        id: 33234113324,
+        artist: "Evanescence",
+        album: "Immortal"
+    }]
+
   return (
-    <div className="App">
-      <header className="App-header">
-       
-        <p>
-         Hello world!
-         <Tracklist />
-        </p>
-        
-      </header>
+    <div>
+      <h1>Jammming</h1>
+      <Tracklist tracks={tracks} />
     </div>
   );
 }

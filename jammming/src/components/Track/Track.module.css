@@ -1,0 +1,19 @@
+.track {
+    display: flex;
+    width: 90%;
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    color: white;
+    margin: 2px 10px;
+}
+
+.trackInfo {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    flex: 4 4;
+    border-top-left-radius: .79rem;
+    border-bottom-left-radius: .79rem;
+
+}

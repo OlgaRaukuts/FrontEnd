@@ -1,42 +1,20 @@
 import React from 'react';
-//import "./TrackList.css";
-//import Track from "../Track/Track";
+import styles from "./Tracklist.module.css";
+import Track from "../Track/Track";
 
 
-function Tracklist(){
-  const tracks = [
-    {
-        name: "Beliver",
-        id: 332323324,
-        artist: "Imagine Dragons",
-        album: "Beliver"
-    },
-    {
-        name: "In the end",
-        id: 3323433324,
-        artist: "Linkin Park",
-        album: "In the end"
-    },
-    {
-        name: "Immortal",
-        id: 33234113324,
-        artist: "Evanescence",
-        album: "Immortal"
-    }
-    ]
+function Tracklist({tracks}){
 return(
-<div className="TrackList">
-      {tracks.map((track) => {
-        return (
-          <div>
-          key={track.id}
-          trackName={track.name}
-          artistName={track.artist}
-          albumName={track.album}
-          </div>
-        );
-      })}
+<>
+<div className={styles.tracklist}>
+<div>
+      <h2>Tracks</h2>
+      {tracks.map(track => (
+        <Track key={track.id} track={track} />
+      ))}
     </div>
+    </div>
+</>
 );
 
 }
