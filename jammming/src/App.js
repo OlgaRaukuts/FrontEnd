@@ -3,6 +3,7 @@ import './App.css';
 import React, {useState} from 'react';
 import SearchResults from './components/SearchResults/SearchResults'
 import SearchBar from './components/SearchBar/SearchBar';
+import Tracklist from './components/Tracklist/Tracklist';
 
 function App() {
   const tracks = [
@@ -26,6 +27,7 @@ function App() {
     }]
 
     const [searchTerm, setSearchTerm] = useState('');
+    const [tracklistItems, setTracklistItems] = useState([]);
 
   // Filter tracks based on search term
   const filteredTracks = tracks.filter(track =>
@@ -34,11 +36,18 @@ function App() {
     track.album.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const addTrackToList = (track) => {
+    if(!tracklistItems.find(savedTrack => savedTrack.id === track.id)) {
+      setTracklistItems(prev => [...prev, track]);
+    }
+  };
+
   return (
     <div>
       <h1>Jammming</h1>
-      <SearchBar onSearch={setSearchTerm}/>
-      <SearchResults tracks={tracks} />
+      <SearchBar onSearch={setSearchTerm} />
+      <SearchResults tracks={filteredTracks} onAdd={addTrackToList} />
+      <Tracklist tracks={tracklistItems} />
     </div>
   );
 }
@@ -46,14 +55,3 @@ function App() {
 export default App;
 
 
-//Additionally, make sure that your interface has a Save To Spotify button and a Search button.
-// <img src={logo} className="App-logo" alt="logo" />
-
-/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */

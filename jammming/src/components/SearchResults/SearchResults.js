@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from "./SearchResults.module.css";
 import Track from "../Track/Track";
+import Tracklist from '../Tracklist/Tracklist';
 
-
-function Tracklist({tracks}){
+function SearchResults({tracks, onAdd}){
 return(
 <>
 <div className={styles.tracklist}>
@@ -13,6 +13,7 @@ return(
         <Track key={track.id} track={track} />
       ))}
     </div>
+    <Tracklist tracks={tracks} onAdd={onAdd} isRemoval={false} />
     </div>
 </>
 );

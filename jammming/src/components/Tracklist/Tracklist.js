@@ -1,4 +1,15 @@
+import React from 'react';
+import Track from '../Track/Track';
 
+const Tracklist = ({ tracks, onAdd, isRemoval }) => (
+  <div>
+    {tracks.map(track => (
+      <Track key={track.id} track={track} onAdd={onAdd} isRemoval={isRemoval} />
+    ))}
+  </div>
+);
+
+export default Tracklist;
 
 /*When a user requests data from Spotify, the JSON response will contain a set of song tracks. Your Jammming web app should display the song name, artist, and album for each track in the results list.
 
