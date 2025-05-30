@@ -1,22 +1,39 @@
 import React from 'react';
-import "./TrackList.css";
-import Track from './Track.js';
+//import "./TrackList.css";
+//import Track from "../Track/Track";
 
 
-function Tracklist(props){
+function Tracklist(){
+  const tracks = [
+    {
+        name: "Beliver",
+        id: 332323324,
+        artist: "Imagine Dragons",
+        album: "Beliver"
+    },
+    {
+        name: "In the end",
+        id: 3323433324,
+        artist: "Linkin Park",
+        album: "In the end"
+    },
+    {
+        name: "Immortal",
+        id: 33234113324,
+        artist: "Evanescence",
+        album: "Immortal"
+    }
+    ]
 return(
 <div className="TrackList">
-      {props.tracks.map((track) => {
+      {tracks.map((track) => {
         return (
-          <Track
+          <div>
           key={track.id}
           trackName={track.name}
           artistName={track.artist}
           albumName={track.album}
-          trackPreview={track.previewUrl}
-          handleClick={() => handlePlaylistManagement(track)}
-          add={add}
-          />
+          </div>
         );
       })}
     </div>
@@ -25,6 +42,7 @@ return(
 }
 
 export default Tracklist;
+
 /*When a user requests data from Spotify, the JSON response will contain a set of song tracks. Your Jammming web app should display the song name, artist, and album for each track in the results list.
 
 Implement this by creating a unidirectional data flow from your root component. The root component should pass down the search results to a child component that will return each individual track to be rendered.
