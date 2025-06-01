@@ -9,22 +9,25 @@ import Playlist from './components/Playlist/Playlist';
 function App() {
   const tracks = [
     {
-        name: "Beliver",
-        id: 332323324,
-        artist: "Imagine Dragons",
-        album: "Beliver"
+        
+      id: 332323324,
+      name: "Beliver",
+      artist: "Imagine Dragons",
+      album: "Beliver"
     },
     {
-        name: "In the end",
-        id: 3323433324,
-        artist: "Linkin Park",
-        album: "In the end"
+      id: '1',
+      name: 'Blinding Lights',
+      artist: 'The Weeknd',
+      album: 'After Hours',
+      uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b'
     },
     {
-        name: "Immortal",
-        id: 33234113324,
-        artist: "Evanescence",
-        album: "Immortal"
+      id: '123',
+      name: 'Bad Habits',
+      artist: 'Ed Sheeran',
+      album: '= (Equals)',
+      uri: 'spotify:track:6PQ88X9TkUIAUIZJhwNhtL'
     }]
 
     const [searchTerm, setSearchTerm] = useState('');
