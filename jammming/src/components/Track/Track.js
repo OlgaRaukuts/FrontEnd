@@ -1,21 +1,29 @@
  import React from 'react';
- import styles from './Track.module.css';
+
  
- function Track({track, onAdd, isRemoval}){
+ function Track({track, onAdd, isRemoval, onRemove}){
+
 
     const handleAdd = () => {
         if(onAdd){
             onAdd(track);
         }
     }
-
+    const handleRemove = () => {
+        if(onRemove){
+            onRemove(track);
+        }
+    }
 
             return (
     <div style={{ marginBottom: '1rem' }}>
       <p><strong>{track.name}</strong></p>
       <p>{track.artist} | {track.album}</p>
-      {!isRemoval && (
+      {!isRemoval &&  (
         <button onClick={handleAdd}>➕ Add</button>
+      )}
+      {isRemoval && (
+        <button onClick={handleRemove}>❌ Remove</button>
       )}
     </div>
   );

@@ -1,23 +1,18 @@
 import React from 'react';
-import styles from "./SearchResults.module.css";
 import Track from "../Track/Track";
 import Tracklist from '../Tracklist/Tracklist';
 
-function SearchResults({tracks, onAdd}){
-return(
-<>
-<div className={styles.tracklist}>
-<div>
-      <h2>Tracks</h2>
-      {tracks.map(track => (
-        <Track key={track.id} track={track} />
-      ))}
+const SearchResults = ({ tracks, onAdd, onRemove, playlistTracks }) => (
+    <div>
+      <h2>Search Results</h2>
+      <Tracklist
+        tracks={tracks}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        playlistTracks={playlistTracks}
+        isRemoval={false}
+      />
     </div>
-    <Tracklist tracks={tracks} onAdd={onAdd} isRemoval={false} />
-    </div>
-</>
-);
-
-}
+  );
 
 export default Tracklist;
