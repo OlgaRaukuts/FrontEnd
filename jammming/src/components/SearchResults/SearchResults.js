@@ -15,4 +15,4 @@ const SearchResults = ({ tracks, onAdd, onRemove, playlistTracks }) => (
     </div>
   );
 
-export default Tracklist;
+export default SearchResults;

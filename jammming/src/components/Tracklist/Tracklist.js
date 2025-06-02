@@ -1,6 +1,5 @@
 import React from 'react';
 import Track from '../Track/Track';
-import styles from './Tracklist.module.css'
 
 const Tracklist = ({ tracks = [], onAdd, isRemoval, onRemove }) => {
   return (

@@ -8,7 +8,7 @@ import Playlist from './components/Playlist/Playlist';
 import Spotify from './components/Spotify';
 
   const App = () => {
-    const [searchResults] = useState([
+    const MOCK_TRACKS = [
       {
         id: 1,
         name: 'Blinding Lights',
@@ -27,11 +27,12 @@ import Spotify from './components/Spotify';
         artist: 'Harry Styles',
         album: 'Harry’s House',
       },
-    ]);
+    ];
   
+    const [term, setTerm] = useState('');
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
-    
+    const [searchResults, setSearchResults] = useState(MOCK_TRACKS);
   
     const addTrack = (track) => {
       if (playlistTracks.find(t => t.id === track.id)) return;
@@ -45,12 +46,32 @@ import Spotify from './components/Spotify';
     const updatePlaylistName = (name) => {
       setPlaylistName(name);
     };
+
+    const handleSearch = () => {
+      const filtered = MOCK_TRACKS.filter(track =>
+        track.name.toLowerCase().includes(term.toLowerCase())
+      );
+      setSearchResults(filtered);
+    };
   
     return (
       <div>
       <h1 style={{display: "flex",
     justifyContent: "center",
     alignItems: "center", color: 'blueviolet'}}>Jammming 🎵</h1>
+    
+    
+    <div style={{ marginBottom: '20px',display: "flex",
+    justifyContent: "center",
+    alignItems: "center" }}>
+        <input
+          type="text"
+          placeholder="Enter a song name"
+          value={term}
+          onChange={(e) => setTerm(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
 
       <h2 style={{display: "flex",
     justifyContent: "center",
