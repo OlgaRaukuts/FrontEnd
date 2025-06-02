@@ -7,112 +7,49 @@ import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import Spotify from './components/Spotify';
 
-function App() {
-  const tracks = [
-    {
-        
-      id: 332323324,
-      name: "Beliver",
-      artist: "Imagine Dragons",
-      album: "Beliver"
-    },
-    {
-      id: '1',
-      name: 'Blinding Lights',
-      artist: 'The Weeknd',
-      album: 'After Hours',
-      uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b'
-    },
-    {
-      id: '123',
-      name: 'Bad Habits',
-      artist: 'Ed Sheeran',
-      album: '= (Equals)',
-      uri: 'spotify:track:6PQ88X9TkUIAUIZJhwNhtL'
-    }]
-
-    const [searchResults, setSearchResults] = useState([]);
-    const [tracklistItems, setTracklistItems] = useState([]);
-    const [playlistName, setPlaylistName] = useState('New Playlist');
-    
-    const filteredTracks = tracks
-    .filter(track =>
-      track.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      track.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      track.album.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .filter(track =>
-      !tracklistItems.find(playlistTrack => playlistTrack.id === track.id)
-    );
+  const App = () => {
+    const [searchResults] = useState([
+      {
+        id: 1,
+        name: 'Blinding Lights',
+        artist: 'The Weeknd',
+        album: 'After Hours',
+      },
+      {
+        id: 2,
+        name: 'Levitating',
+        artist: 'Dua Lipa',
+        album: 'Future Nostalgia',
+      },
+      {
+        id: 3,
+        name: 'As It Was',
+        artist: 'Harry Styles',
+        album: 'Harry’s House',
+      },
+    ]);
   
-
-  const addTrackToPlaylist = (track) => {
-    setTracklistItems((prevTracks) => {
-      if (prevTracks.find(savedTrack => savedTrack.id === track.id)) {
-        return prevTracks; 
+    const [playlistTracks, setPlaylistTracks] = useState([]);
+  
+    const addTrack = (track) => {
+      if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+        return; // Track already in playlist
       }
-      return [...prevTracks, track];
-    });
-  };
-
-  const removeTrackFromPlaylist = (track) => {
-    setTracklistItems((prevTracks) =>
-      prevTracks.filter((t) => t.id !== track.id)
+      setPlaylistTracks(prevTracks => [...prevTracks, track]);
+    };
+  
+    return (
+      <div>
+        <h1>Jammming</h1>
+  
+        <h2>Search Results</h2>
+        <Tracklist tracks={searchResults} onAdd={addTrack} isRemoval={false} />
+  
+        <h2>My Playlist</h2>
+        <Playlist playlistTracks={playlistTracks} />
+      </div>
     );
   };
-
-  const updatePlaylistName = (name) => {
-    setPlaylistName(name);
-  };
-
-  const savePlaylist = () => {
-    const trackUris = tracklistItems.map(track => track.uri);
-  
-    console.log("Saving playlist to Spotify...");
-  
-    console.log("Playlist Name:", playlistName);
-  
-    console.log("Track URIs:", trackUris);
-
-    //reset playlist
-    setPlaylistName('New Playlist');
-    setTracklistItems([]);
-  }
-
-  useEffect(() => {
-    Spotify.getAccessToken();
-  }, []);
-
-  const handleSearch = (term) => {
-    Spotify.search(term)
-      .then(tracks => {
-        setSearchResults(tracks);
-      })
-      .catch(error => {
-        console.error("Spotify Search Error:", error);
-      });
-  };
-
-  return (
-    <div>
-      <h1>Jammming</h1>
-      <SearchBar onSearch={handleSearch} />
-      <SearchResults
-  tracks={filteredTracks}
-  onAdd={addTrackToPlaylist}
-  playlistTracks={tracklistItems}
-/>
-      <Tracklist tracks={tracklistItems} />
-      <Playlist
-        name={playlistName}
-        tracks={tracklistItems}
-        onNameChange={updatePlaylistName}
-        onRemove={removeTrackFromPlaylist}
-        onSave={savePlaylist}
-      />
-    </div>
-  );
-}
 
 export default App;
 

@@ -7,7 +7,7 @@ const SearchResults = ({ tracks, onAdd, onRemove, playlistTracks }) => (
       <h2>Search Results</h2>
       <Tracklist
         tracks={tracks}
-        onAdd={onAdd}
+        onTrackAction={onAdd}
         onRemove={onRemove}
         playlistTracks={playlistTracks}
         isRemoval={false}

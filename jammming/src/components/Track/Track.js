@@ -1,47 +1,26 @@
  import React from 'react';
+ import styles from "./Track.module.css";
 
- 
- function Track({track, onAdd, isRemoval, onRemove}){
-
-
+     
+ const Track = ({ track, onAdd, isRemoval }) => {
+    
     const handleAdd = () => {
-        if(onAdd){
-            onAdd(track);
-        }
-    }
-    const handleRemove = () => {
-        if(onRemove){
-            onRemove(track);
-        }
-    }
-
-            return (
-                <div className={styles.track}>
-                <div className={styles.trackInfo}>
-                    <h2 className={styles.trackInfo_name}>{trackName}</h2>
-                    <div className={styles.trackInfo_lower}>
-                        <p className={`${styles.trackInfo_details}`}>
-                            {artistName}
-                        </p>
-                        <p
-                            className={`${styles.trackInfo_details} ${styles.trackInfo_spacer}`}
-                        >
-                            |
-                        </p>
-                        <p className={`${styles.trackInfo_details}`}>{albumName}</p>
-                    </div>
-                </div>
-                
-      {!isRemoval &&  (
-        <button onClick={handleAdd}>➕ Add</button>
-      )}
-      {isRemoval && (
-        <button onClick={handleRemove}>❌ Remove</button>
-      )}
-    </div>
-  );
-}
+      onAdd(track);
+    };
+  
+    return (
+      <div className={styles.trackContainer}>
+        <div className={styles.trackInfo}>
+        <h3 className={styles.trackName}>{track.name}</h3>
+        <div className={styles.trackInfo_lower}>
+        <p className={styles.trackDetails}>{track.artist} | {track.album}</p>
+        </div>
+        </div>
+        {!isRemoval && <button className={styles.trackButton} onClick={handleAdd}>+</button>}
+      </div>
+    );
+  };
+  
+  export default Track;
 
 
- export default Track;
- 
