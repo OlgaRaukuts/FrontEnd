@@ -29,27 +29,46 @@ import Spotify from './components/Spotify';
       },
     ]);
   
+    const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
+    
   
     const addTrack = (track) => {
-      if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
-        return; // Track already in playlist
-      }
-      setPlaylistTracks(prevTracks => [...prevTracks, track]);
+      if (playlistTracks.find(t => t.id === track.id)) return;
+      setPlaylistTracks([...playlistTracks, track]);
+    };
+  
+    const removeTrack = (track) => {
+      setPlaylistTracks(playlistTracks.filter(t => t.id !== track.id));
+    };
+  
+    const updatePlaylistName = (name) => {
+      setPlaylistName(name);
     };
   
     return (
       <div>
-        <h1>Jammming</h1>
-  
-        <h2>Search Results</h2>
-        <Tracklist tracks={searchResults} onAdd={addTrack} isRemoval={false} />
-  
-        <h2>My Playlist</h2>
-        <Playlist playlistTracks={playlistTracks} />
-      </div>
+      <h1 style={{display: "flex",
+    justifyContent: "center",
+    alignItems: "center", color: 'blueviolet'}}>Jammming 🎵</h1>
+
+      <h2 style={{display: "flex",
+    justifyContent: "center",
+    alignItems: "center", color: 'purple'}}>Search Results</h2>
+      <Tracklist
+        tracks={searchResults}
+        onAdd={addTrack}
+        isRemoval={false}
+      />
+
+      <Playlist
+        name={playlistName}
+        tracks={playlistTracks}
+        onRemove={removeTrack}
+        onNameChange={updatePlaylistName}
+      />
+    </div>
     );
   };
 
 export default App;
-

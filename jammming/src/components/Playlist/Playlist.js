@@ -3,15 +3,16 @@ import Tracklist from '../Tracklist/Tracklist';
 import styles from './Playlist.module.css';
 
 
-const Playlist = ({ playlistTracks }) => {
+const Playlist = ({  name, tracks, onNameChange, onRemove }) => {
+  const handleNameChange = (e) => {
+    onNameChange(e.target.value);
+  };
+
   return (
     <div className={styles.playlist}>
-      {playlistTracks.map(track => (
-        <div key={track.id}>
-          <h4>{track.name}</h4>
-          <p>{track.artist} | {track.album}</p>
-        </div>
-      ))}
+      <input value={name} onChange={handleNameChange} />
+      <Tracklist tracks={tracks} onRemove={onRemove} isRemoval={true} />
+
     </div>
   );
 };

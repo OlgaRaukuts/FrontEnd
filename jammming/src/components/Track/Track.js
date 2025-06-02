@@ -2,12 +2,19 @@
  import styles from "./Track.module.css";
 
      
- const Track = ({ track, onAdd, isRemoval }) => {
+ const Track = ({ track, onAdd, isRemoval, onRemove }) => {
     
     const handleAdd = () => {
-      onAdd(track);
-    };
-  
+        if (onAdd) {
+          onAdd(track);
+        }
+      };
+
+      const handleRemove = () => {
+        if(onRemove) {
+            onRemove(track);
+        }
+      }
     return (
       <div className={styles.trackContainer}>
         <div className={styles.trackInfo}>
@@ -16,7 +23,11 @@
         <p className={styles.trackDetails}>{track.artist} | {track.album}</p>
         </div>
         </div>
-        {!isRemoval && <button className={styles.trackButton} onClick={handleAdd}>+</button>}
+        {isRemoval ? (
+        <button className={styles.trackButton.remove} onClick={handleRemove}>–</button>
+      ) : (
+        <button className={styles.trackButton.add} onClick={handleAdd}>+</button>
+      )}
       </div>
     );
   };
