@@ -5,6 +5,7 @@ import SearchResults from './components/SearchResults/SearchResults'
 import SearchBar from './components/SearchBar/SearchBar';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
+import Spotify from './components/Spotify';
 
 function App() {
   const tracks = [
@@ -30,7 +31,7 @@ function App() {
       uri: 'spotify:track:6PQ88X9TkUIAUIZJhwNhtL'
     }]
 
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
     const [tracklistItems, setTracklistItems] = useState([]);
     const [playlistName, setPlaylistName] = useState('New Playlist');
     
@@ -77,10 +78,25 @@ function App() {
     setPlaylistName('New Playlist');
     setTracklistItems([]);
   }
+
+  useEffect(() => {
+    Spotify.getAccessToken();
+  }, []);
+
+  const handleSearch = (term) => {
+    Spotify.search(term)
+      .then(tracks => {
+        setSearchResults(tracks);
+      })
+      .catch(error => {
+        console.error("Spotify Search Error:", error);
+      });
+  };
+
   return (
     <div>
       <h1>Jammming</h1>
-      <SearchBar onSearch={setSearchTerm} />
+      <SearchBar onSearch={handleSearch} />
       <SearchResults
   tracks={filteredTracks}
   onAdd={addTrackToPlaylist}

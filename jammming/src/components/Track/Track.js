@@ -16,9 +16,22 @@
     }
 
             return (
-    <div style={{ marginBottom: '1rem' }}>
-      <p><strong>{track.name}</strong></p>
-      <p>{track.artist} | {track.album}</p>
+                <div className={styles.track}>
+                <div className={styles.trackInfo}>
+                    <h2 className={styles.trackInfo_name}>{trackName}</h2>
+                    <div className={styles.trackInfo_lower}>
+                        <p className={`${styles.trackInfo_details}`}>
+                            {artistName}
+                        </p>
+                        <p
+                            className={`${styles.trackInfo_details} ${styles.trackInfo_spacer}`}
+                        >
+                            |
+                        </p>
+                        <p className={`${styles.trackInfo_details}`}>{albumName}</p>
+                    </div>
+                </div>
+                
       {!isRemoval &&  (
         <button onClick={handleAdd}>➕ Add</button>
       )}
