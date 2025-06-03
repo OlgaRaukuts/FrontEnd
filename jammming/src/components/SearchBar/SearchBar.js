@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
 
 
   return (
-    <div style={{ marginBottom: '20px' }}>
+    <div style={{ marginBottom: '20px'}}>
       <input
         type="text"
         placeholder="Enter a song name"

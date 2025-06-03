@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import Spotify from './components/Spotify';
+import styles from './App.module.css';
 
   const App = () => {
     const MOCK_TRACKS = [
@@ -56,6 +57,18 @@ import Spotify from './components/Spotify';
       );
       setSearchResults(filtered);
     };
+
+    const savePlaylist = () => {
+      const trackUris = playlistTracks.map(track => track.uri);
+      
+      console.log('Saving playlist:', playlistName);
+      console.log('Track URIs:', trackUris);
+
+  // Reset playlist
+  setPlaylistName('New Playlist');
+  setPlaylistTracks([]);
+
+    }
   
     return (
       <div>
@@ -73,7 +86,7 @@ import Spotify from './components/Spotify';
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch} style={{marginLeft: '10px'}}>Search</button>
       </div>
 
       <h2 style={{display: "flex",
@@ -91,6 +104,9 @@ import Spotify from './components/Spotify';
         onRemove={removeTrack}
         onNameChange={updatePlaylistName}
       />
+      <button onClick={savePlaylist} className={styles.buttonSpotify}>
+      Save to Spotify
+   </button>
     </div>
     );
   };

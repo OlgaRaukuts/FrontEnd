@@ -1,5 +1,4 @@
 import React from 'react';
-import Track from "../Track/Track";
 import Tracklist from '../Tracklist/Tracklist';
 
 const SearchResults = ({ tracks, onAdd, onRemove, playlistTracks }) => (

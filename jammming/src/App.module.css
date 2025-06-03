@@ -1,0 +1,14 @@
+.buttonSpotify {
+     margin-left: 1000px;
+     margin-top: 20px;
+     background-color:#aa58f1;
+     font-size: 1rem;
+     color: azure;
+     border-radius: 6px;
+
+}
+
+.buttonSpotify:hover {
+    background-color: #3315e1;
+    color: white;
+  }

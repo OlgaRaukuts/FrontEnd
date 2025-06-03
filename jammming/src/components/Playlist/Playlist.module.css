@@ -1,9 +1,10 @@
 .playlist {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(202, 36, 235, 0.2);
     flex: 1;
     text-align: center;
     color: white;
     margin: 0 2rem;
+    margin-top: 2rem;
     border-radius: 1rem;
     overflow: hidden;
 }
