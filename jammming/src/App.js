@@ -36,7 +36,7 @@ import styles from './App.module.css';
     const [query, setQuery] = useState('');
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
-    const [searchResults, setSearchResults] = useState(MOCK_TRACKS);
+    const [searchResults, setSearchResults] = useState([]);
   
     const addTrack = (track) => {
       if (playlistTracks.find(t => t.id === track.id)) return;
@@ -51,11 +51,11 @@ import styles from './App.module.css';
       setPlaylistName(name);
     };
 
-    const handleSearch = () => {
-      const filtered = MOCK_TRACKS.filter(track =>
-        track.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filtered);
+    const handleSearch = async () => {
+    if (!query) return;
+    const tracks = await Spotify.search(query);
+    setSearchResults(tracks);
+      
     };
 
     const savePlaylist = () => {
@@ -69,6 +69,7 @@ import styles from './App.module.css';
   setPlaylistTracks([]);
 
     }
+
   
     return (
       <div>
@@ -85,6 +86,7 @@ import styles from './App.module.css';
           placeholder="Enter a song name"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
         />
         <button onClick={handleSearch} style={{marginLeft: '10px'}}>Search</button>
       </div>
@@ -112,3 +114,11 @@ import styles from './App.module.css';
   };
 
 export default App;
+
+
+/* hardcoded search 
+const filtered = MOCK_TRACKS.filter(track =>
+        track.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setSearchResults(filtered);
+      */
