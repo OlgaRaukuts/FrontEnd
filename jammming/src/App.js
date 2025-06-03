@@ -14,22 +14,25 @@ import Spotify from './components/Spotify';
         name: 'Blinding Lights',
         artist: 'The Weeknd',
         album: 'After Hours',
+        uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b'
       },
       {
         id: 2,
         name: 'Levitating',
         artist: 'Dua Lipa',
         album: 'Future Nostalgia',
+        uri: 'spotify:track:39LLxExYz6ewLAcYrzQQyP'
       },
       {
         id: 3,
         name: 'As It Was',
         artist: 'Harry Styles',
         album: 'Harry’s House',
+        uri: 'spotify:track:6A2l7r0R73m5q5a0w5T6wA'
       },
     ];
   
-    const [term, setTerm] = useState('');
+    const [query, setQuery] = useState('');
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
     const [searchResults, setSearchResults] = useState(MOCK_TRACKS);
@@ -49,7 +52,7 @@ import Spotify from './components/Spotify';
 
     const handleSearch = () => {
       const filtered = MOCK_TRACKS.filter(track =>
-        track.name.toLowerCase().includes(term.toLowerCase())
+        track.name.toLowerCase().includes(query.toLowerCase())
       );
       setSearchResults(filtered);
     };
@@ -67,8 +70,8 @@ import Spotify from './components/Spotify';
         <input
           type="text"
           placeholder="Enter a song name"
-          value={term}
-          onChange={(e) => setTerm(e.target.value)}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
       </div>

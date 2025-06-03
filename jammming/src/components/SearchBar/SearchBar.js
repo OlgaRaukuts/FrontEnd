@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 
 const SearchBar = ({ onSearch }) => {
-  const [term, setTerm] = useState('');
+  const [query, setQuery] = useState('');
 
   const handleTermChange = (e) => {
-    setTerm(e.target.value);
+    setQuery(e.target.value);
   };
 
   const search = () => {
-    onSearch(term);
+    onSearch(query);
   };
 
 
@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
       <input
         type="text"
         placeholder="Enter a song name"
-        value={term}
+        value={query}
         onChange={handleTermChange}
       />
       <button onClick={search}>Search</button>
