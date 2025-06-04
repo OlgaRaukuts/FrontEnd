@@ -9,7 +9,9 @@ function App() {
       <header>
          <Header />
       </header>
-      <Entry />
+      <main className="container">
+                <Entry />
+      </main>
     </div>
   );
 }
