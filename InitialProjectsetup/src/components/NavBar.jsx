@@ -4,7 +4,7 @@ import styles from "./NavBar.module.css";
 function NavBar(){
 return(
     <header>
-        <nav>
+        <nav className={styles.nav}>
         <img src="../react-logo.png" alt="React logo" className={styles.img}/>
         <span>ReactFacts</span>
         </nav>
