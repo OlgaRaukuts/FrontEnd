@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./NavBar.module.css";
 
 function NavBar(){
-return(
-    <header>
-        <nav className={styles.nav}>
-        <img src="../react-logo.png" alt="React logo" className={styles.img}/>
-        <span>ReactFacts</span>
-        </nav>
-    </header>
+return(       
+<header>
+    <nav className={styles.nav}>
+    <img src="../react-logo.png" alt="React logo" className={styles.img}/>
+    <span>ReactFacts</span>
+    </nav>
+</header>
+    
     
 )
 }
