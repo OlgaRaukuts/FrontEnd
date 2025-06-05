@@ -2,18 +2,19 @@
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import Entry from './components/Entry/Entry.jsx';
-import data from './data.js';
+import {data} from './data.js';
 
 
 
 function App() {
   //const etnaImage = 'https://images.unsplash.com/photo-1570978999428-f17f4761d1c3?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
   //const fujiImage = 'https://plus.unsplash.com/premium_photo-1661964177687-57387c2cbd14?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  
+  
   const entryElements = data.map((entry) => {
     return (
         <Entry
-            src={entry.src}
-            alt={entry.alt}
+            img={entry.img}
             title={entry.title}
             country={entry.country}
             googleMapsLink={entry.googleMapsLink}
@@ -22,6 +23,7 @@ function App() {
     )
 })
 console.log(entryElements);
+
   return (
     <div>
       <header>
