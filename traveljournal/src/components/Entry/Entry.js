@@ -10,8 +10,8 @@ function Entry(props){
             <div className={styles.div}>
                 <img 
                 className={styles.image}
-                src={props.image} 
-                alt={props.alt} />
+                src={props.img.src} 
+                alt={props.img.alt} />
             </div>
             
             <div className="info-container">
@@ -19,11 +19,13 @@ function Entry(props){
                 className={styles.imageMarker}
                 src={Image} 
                 alt="map marker icon"/>
-                <span className={styles.span}>{props.markerName}</span>
-                <a href={props.link}>View On Google Maps</a>
-                <h2 className={styles.h2}>{props.h2}</h2>
-                <p className={styles.p}>{props.dates}</p>
-                <p className="entry-text">{props.description}</p>
+                <span className={styles.span}>{props.country}</span>
+                <a href={props.googleMapsLink}
+                target="_blank"
+                rel="noopener noreferrer">View On Google Maps</a>
+                <h2 className={styles.h2}>{props.title}</h2>
+                <p className={styles.pDates}>{props.dates}</p>
+                <p className={styles.p}>{props.text}</p>
             </div>
         </article>
     )

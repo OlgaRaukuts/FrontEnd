@@ -2,8 +2,6 @@
   "name": "traveljournal",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
-  "type":"module",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -17,8 +15,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -38,7 +37,10 @@
       "last 1 safari version"
     ]
   },
-  "resolutions": {
-    "@babel/runtime": "7.18"
+  "devDependencies": {
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "babel-jest": "^30.0.0-beta.3",
+    "jest": "^27.5.1"
   }
 }
