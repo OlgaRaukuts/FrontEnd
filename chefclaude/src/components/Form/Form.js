@@ -3,17 +3,20 @@ import styles from "../Form/Form.module.css";
 
 function Form(){
 
-    const [ingredients, setIngredient] = useState([]);
+const [ingredients, setIngredients] = useState(
+        ["all the main spices", "pasta", "ground beef", "tomato paste"]
+    )
 
 const ingredientsListItem = ingredients.map(ingredient => (
-    <li key={ingredient}>{ingredient}</li>
+    <li key={ingredient} className={styles.li}>{ingredient}</li>
 ))
 
 
    function addIngredient(formData){
     const newIngredient = formData.get("ingredient");
-    setIngredient(prevIngredient => [...prevIngredient, newIngredient]);
-  } 
+    setIngredients(prevIngredient => [...prevIngredient, newIngredient]);
+    }
+     
 
     return(
        <main className={styles.main}>
@@ -26,9 +29,18 @@ const ingredientsListItem = ingredients.map(ingredient => (
         name="ingredient" />
         <button className={styles.button}>Add ingredient</button>
         </form>
-        <ul>
-            {ingredientsListItem}
-        </ul>
+        {ingredients.length > 0 && <section>
+                <h2>Ingredients on hand:</h2>
+                <ul aria-live="polite" className={styles.ul}>{ingredientsListItem}</ul>
+                {ingredients.length > 3 &&
+                <div className={styles.recipeContainer}>
+                    <div>
+                        <h3 className={styles.h3}>Ready for a recipe?</h3>
+                        <p className={styles.p}>Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button className={styles.buttonGetRecipe}>Get a recipe</button>
+                </div> }
+            </section>}
        </main>
     );
 }
