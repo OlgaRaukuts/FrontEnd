@@ -1,0 +1,37 @@
+
+main {
+    padding: 30px 30px 10px;
+}
+
+.addIngredientForm {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    height: 38px;
+}
+
+.input {
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
+    padding: 9px 13px;
+    flex: 1;
+    min-width: 150px;
+    max-width: 400px;
+}
+
+.button {
+    font-family: Inter, sans-serif;
+    border-radius: 6px;
+    background-color: #141413;
+    color: #FAFAF8;
+    width: 150px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    z-index: 9999;
+    position: 'relative'
+}
+
+.button::before {
+    content: "+";
+    margin-right: 5px;
+}
