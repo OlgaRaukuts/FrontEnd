@@ -4,8 +4,7 @@ import Form from './components/Form/Form';
 import React, {useState} from 'react';
 
 function App() {
-
- return (
+return (
     <div className={styles.container}>
       <header>
     <Header />
@@ -13,9 +12,10 @@ function App() {
     <Form />
     </div>
   );
+
 }
 
 
 export default App;
 
-/*  */
+/*   */

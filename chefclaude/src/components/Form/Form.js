@@ -3,23 +3,21 @@ import styles from "../Form/Form.module.css";
 
 function Form(){
 
-const ingredients = ["Chicken", "Oregano", "Tomatoes"];
+    const [ingredients, setIngredient] = useState([]);
 
 const ingredientsListItem = ingredients.map(ingredient => (
     <li key={ingredient}>{ingredient}</li>
 ))
 
-   function handleSubmit(event){
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+
+   function addIngredient(formData){
     const newIngredient = formData.get("ingredient");
-    ingredients.push(newIngredient);
-    console.log(ingredients);
+    setIngredient(prevIngredient => [...prevIngredient, newIngredient]);
   } 
 
     return(
        <main className={styles.main}>
-        <form className={styles.addIngredientForm} onSubmit={handleSubmit}>
+        <form className={styles.addIngredientForm} action={addIngredient}>
         <input 
         className={styles.input}
         type="text"
@@ -36,3 +34,5 @@ const ingredientsListItem = ingredients.map(ingredient => (
 }
 
 export default Form;
+
+
