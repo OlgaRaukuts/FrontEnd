@@ -1,21 +1,11 @@
-import padsData from "../pads";
-import styles from '../App.module.css';
-import React, {useState} from "react";
 
-function Pad(){
-
-    const [pads, setPads] = useState(padsData); 
-
-    const buttonElements = pads.map(pad => (
-    <button key={pad.id}></button>
-  ))
+function Pad(props){
 return (
-<main>
-    <div className={styles.padContainer}>
-                {buttonElements}
-    </div>
-</main>
-);
+        <button 
+            style={{backgroundColor: props.color}}
+        ></button>
+    )
+
 }
 
 export default Pad;
