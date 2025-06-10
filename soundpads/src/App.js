@@ -1,13 +1,18 @@
-import pads from './pads';
+import padsData from './pads';
+import styles from './App.module.css';
 import React, {useState} from 'react';
 
 function App() {
 
-  const [pads, setPads] = useState([]);
+  const [pads, setPads] = useState(padsData);
+
+  const buttonElements = pads.map(pad => (
+    <button></button>
+  ))
    return (
         <main>
-            <div className="pad-container">
-                {/* <button>s go here */}
+            <div className={styles.padContainer}>
+                {buttonElements}
             </div>
         </main>
     );
