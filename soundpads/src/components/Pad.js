@@ -1,9 +1,12 @@
+import React, {useState} from "react";
 
 function Pad(props){
-return (
+
+    return (
         <button 
-            style={{backgroundColor: props.color}}
+            style={{backgroundColor: props.on ? props.color : "#ccc"}}
             className={props.on ? "on" : undefined}
+            onClick={() => props.toggle(props.id)}
         ></button>
     )
 
