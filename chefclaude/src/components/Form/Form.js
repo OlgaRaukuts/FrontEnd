@@ -1,28 +1,26 @@
 import React, {useState} from "react";
 import styles from "../Form/Form.module.css";
 import ClaudeRecipe from './ ClaudeRecipe';
+import IngredientsList from "./IngredientsList";
+import { getRecipeFromMistral } from "./AIApi";
+
 
 function Form(){
 
-const [ingredients, setIngredients] = useState(
-        ["all the main spices", "pasta", "ground beef", "tomato paste"]
-    )
-const [recipeShown, setRecipeShown] = useState(false);
-
-const ingredientsListItem = ingredients.map(ingredient => (
-    <li key={ingredient} className={styles.li}>{ingredient}</li>
-))
-
-
+const [ingredients, setIngredients] = useState([])
+const [recipe, setRecipe] = useState("");
+  
+async function getRecipe(){
+        const generatedRecipe =  await getRecipeFromMistral(ingredients);
+        setRecipe(generatedRecipe)
+    }
+ 
    function addIngredient(formData){
     const newIngredient = formData.get("ingredient");
     setIngredients(prevIngredient => [...prevIngredient, newIngredient]);
     }
 
-    function toggleRecipeShown(){
-        setRecipeShown(preShown => !preShown);
-    }
-     
+ 
 
     return(
        <main className={styles.main}>
@@ -35,19 +33,10 @@ const ingredientsListItem = ingredients.map(ingredient => (
         name="ingredient" />
         <button className={styles.button}>Add ingredient</button>
         </form>
-        {ingredients.length > 0 && <section>
-                <h2>Ingredients on hand:</h2>
-                <ul aria-live="polite" className={styles.ul}>{ingredientsListItem}</ul>
-                {ingredients.length > 3 &&
-                <div className={styles.recipeContainer}>
-                    <div>
-                        <h3 className={styles.h3}>Ready for a recipe?</h3>
-                        <p className={styles.p}>Generate a recipe from your list of ingredients.</p>
-                    </div>
-                    <button className={styles.buttonGetRecipe} onClick={toggleRecipeShown}>Get a recipe</button>
-                </div> }
-            </section>}
-            { recipeShown && <ClaudeRecipe />}
+        {ingredients.length > 0 && <IngredientsList 
+        ingredients={ingredients}
+        getRecipe={getRecipe}/>}
+            { recipe && <ClaudeRecipe recipe={recipe} />}
        </main>
     );
 }
