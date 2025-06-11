@@ -1,0 +1,33 @@
+
+.body {
+    margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: darkgrey;
+    color: white;
+}
+.main{
+    padding: 60px 30px;
+    background-image: url(./react-logo-half.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: 75%;
+}
+.h1{
+    margin: 0;
+    font-size: 2.4rem;
+}
+.facts{
+    margin-top: 46px;
+    max-width: 500px;
+}
+
+.factsItems{
+    margin-block: 20px;
+    line-height: 19px;
+    
+}
+
+.factsItems li::marker{
+    color: aqua;
+    font-size: 1.5rem;
+}  
