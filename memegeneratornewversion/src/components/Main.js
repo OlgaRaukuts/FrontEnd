@@ -10,10 +10,10 @@
     );
     
     function handleChange(event){
-       const {value} = event.target;
+       const {value, name} = event.target;
        setMeme(prevMeme => ({
         ...prevMeme,
-        topText: value
+        [name]: value
        }));
     }
 
@@ -27,6 +27,7 @@
                         name="topText"
                         className={styles.formInput}
                         onChange={handleChange}
+                        value={meme.topText}
                     />
                 </label>
 
@@ -37,6 +38,7 @@
                         name="bottomText"
                         className={styles.formInput}
                         onChange={handleChange}
+                        value={meme.bottomText}
                     />
                 </label>
                 <button className={styles.formButton}>Get a new meme image 🖼</button>
