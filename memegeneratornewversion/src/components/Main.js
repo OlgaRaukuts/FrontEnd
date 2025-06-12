@@ -9,6 +9,26 @@
     }   
     );
     const [allMemes, setAllMemes] = useState([]);
+
+function getMemeImage() {
+    if (!allMemes || allMemes.length === 0) {
+        console.warn("Meme list not loaded yet.");
+        return;
+    }
+
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+    const selectedMeme = allMemes[randomNumber];
+
+    if (!selectedMeme || !selectedMeme.url) {
+        console.warn("Invalid meme data at index", randomNumber);
+        return;
+    }
+
+    setMeme(prevMeme => ({
+        ...prevMeme,
+        imageUrl: selectedMeme.url.replace(/^http:/, "https:")
+    }));
+}
     
     function handleChange(event){
        const {value, name} = event.target;
@@ -17,10 +37,15 @@
         [name]: value
        }));
     }
-    useEffect(() => {
-        fetch("https://api.imgflip.com/get_memes").then(res => res.json())
-        .then(data => setAllMemes(data.data.memes))
-    }, [])
+useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+        .then(res => res.json())
+        .then(data => {
+            console.log("API response:", data); // <--- DEBUG
+            setAllMemes(data.data.memes);
+        })
+        .catch(err => console.error("Error fetching memes:", err));
+}, []);
 
     return (
         <main>
@@ -46,10 +71,10 @@
                         value={meme.bottomText}
                     />
                 </label>
-                <button className={styles.formButton}>Get a new meme image 🖼</button>
+                <button className={styles.formButton} onClick={getMemeImage}>Get a new meme image 🖼</button>
             </div>
             <div className={styles.meme}>
-                <img src={meme.imageUrl} className={styles.memeImg} />
+                <img src={meme.imageUrl} className={styles.memeImg} alt="meme" />
                 <span className={styles.memeSpanTop}>{meme.topText}</span>
                 <span className={styles.memeSpanBottom}>{meme.bottomText}</span>
             </div>
