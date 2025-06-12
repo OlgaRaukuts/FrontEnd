@@ -1,6 +1,15 @@
  import styles from '../App.module.css'
+ import {useState} from 'react';
 
  function Main() {
+    const [meme, setMeme] = useState({
+        topText: "One does not simply",
+        bottomText: "Walk into Mordor", 
+        imageUrl: "http://i.imgflip.com/1bij.jpg"
+    }
+        
+    );
+
     return (
         <main>
             <div className={styles.form}>
@@ -24,9 +33,9 @@
                 <button className={styles.formButton}>Get a new meme image 🖼</button>
             </div>
             <div className={styles.meme}>
-                <img src="http://i.imgflip.com/1bij.jpg" className={styles.memeImg} />
-                <span className={styles.memeSpanTop}>One does not simply</span>
-                <span className={styles.memeSpanBottom}>Walk into Mordor</span>
+                <img src={meme.imageUrl} className={styles.memeImg} />
+                <span className={styles.memeSpanTop}>{meme.topText}</span>
+                <span className={styles.memeSpanBottom}>{meme.bottomText}</span>
             </div>
         </main>
     )
