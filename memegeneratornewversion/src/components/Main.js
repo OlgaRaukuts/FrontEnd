@@ -1,5 +1,5 @@
  import styles from '../App.module.css'
- import {useState} from 'react';
+ import {useState, useEffect} from 'react';
 
  function Main() {
     const [meme, setMeme] = useState({
@@ -8,6 +8,7 @@
         imageUrl: "http://i.imgflip.com/1bij.jpg"
     }   
     );
+    const [allMemes, setAllMemes] = useState([]);
     
     function handleChange(event){
        const {value, name} = event.target;
@@ -16,6 +17,10 @@
         [name]: value
        }));
     }
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes").then(res => res.json())
+        .then(data => setAllMemes(data.data.memes))
+    }, [])
 
     return (
         <main>
