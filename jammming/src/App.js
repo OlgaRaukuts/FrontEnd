@@ -1,8 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
-import SearchResults from './components/SearchResults/SearchResults'
-import SearchBar from './components/SearchBar/SearchBar';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import Spotify from './components/Spotify';
