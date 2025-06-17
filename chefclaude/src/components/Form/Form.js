@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styles from "../Form/Form.module.css";
 import ClaudeRecipe from './ ClaudeRecipe';
 import IngredientsList from "./IngredientsList";
@@ -9,6 +9,12 @@ function Form(){
 
 const [ingredients, setIngredients] = useState([])
 const [recipe, setRecipe] = useState("");
+
+useEffect(() => {
+        if (recipe !== "" && recipeSection.current !== null) {
+            recipeSection.current.scrollIntoView()
+        }
+    }, [recipe])
   
 async function getRecipe(){
         const generatedRecipe =  await getRecipeFromMistral(ingredients);
