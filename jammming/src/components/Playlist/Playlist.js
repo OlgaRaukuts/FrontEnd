@@ -9,10 +9,9 @@ const Playlist = ({  name, tracks, onNameChange, onRemove }) => {
   };
 
   return (
-    <div className={styles.playlist}>
-      <input value={name} onChange={handleNameChange} style={{marginTop: '8px', marginBottom: '5px'}}/>
+    <div className={styles.Playlist}>
+      <input value={name} onChange={handleNameChange} className={styles.PlaylistInput}/>
       <Tracklist tracks={tracks} onRemove={onRemove} isRemoval={true} />
-
     </div>
   );
 };
