@@ -1,4 +1,3 @@
-//import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 import Tracklist from './components/Tracklist/Tracklist';
@@ -7,30 +6,7 @@ import Spotify from './components/Spotify';
 import styles from './App.module.css';
 
   const App = () => {
-    const MOCK_TRACKS = [
-      {
-        id: 1,
-        name: 'Blinding Lights',
-        artist: 'The Weeknd',
-        album: 'After Hours',
-        uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b'
-      },
-      {
-        id: 2,
-        name: 'Levitating',
-        artist: 'Dua Lipa',
-        album: 'Future Nostalgia',
-        uri: 'spotify:track:39LLxExYz6ewLAcYrzQQyP'
-      },
-      {
-        id: 3,
-        name: 'As It Was',
-        artist: 'Harry Styles',
-        album: 'Harry’s House',
-        uri: 'spotify:track:6A2l7r0R73m5q5a0w5T6wA'
-      },
-    ];
-  
+   
     const [query, setQuery] = useState('');
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
@@ -49,12 +25,12 @@ import styles from './App.module.css';
       setPlaylistName(name);
     };
 
-    const handleSearch = async () => {
-    if (!query) return;
-    const tracks = await Spotify.search(query);
-    setSearchResults(tracks);
-      
-    };
+  
+const handleSearch = (query) => {
+   Spotify.search(query).then(results => {
+  setSearchResults(results);
+});
+};
 
     const savePlaylist = () => {
       const trackUris = playlistTracks.map(track => track.uri);
@@ -85,7 +61,7 @@ import styles from './App.module.css';
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button onClick={handleSearch} style={{marginLeft: '10px'}}>Search</button>
+        <button onClick={() => handleSearch(query)} style={{marginLeft: '10px'}}>Search</button>
       </div>
 
       <h2 style={{display: "flex",
@@ -118,4 +94,30 @@ const filtered = MOCK_TRACKS.filter(track =>
         track.name.toLowerCase().includes(query.toLowerCase())
       );
       setSearchResults(filtered);
+
+
+       const MOCK_TRACKS = [
+      {
+        id: 1,
+        name: 'Blinding Lights',
+        artist: 'The Weeknd',
+        album: 'After Hours',
+        uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b'
+      },
+      {
+        id: 2,
+        name: 'Levitating',
+        artist: 'Dua Lipa',
+        album: 'Future Nostalgia',
+        uri: 'spotify:track:39LLxExYz6ewLAcYrzQQyP'
+      },
+      {
+        id: 3,
+        name: 'As It Was',
+        artist: 'Harry Styles',
+        album: 'Harry’s House',
+        uri: 'spotify:track:6A2l7r0R73m5q5a0w5T6wA'
+      },
+    ];
+  
       */
