@@ -1,0 +1,7 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blueviolet;
+  font-size: 3rem;
+}
