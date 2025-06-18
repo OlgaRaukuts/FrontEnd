@@ -1,9 +1,10 @@
 import React from 'react';
 import Track from '../Track/Track';
+import styles from './Tracklist.module.css';
 
 const Tracklist = ({ tracks = [], onAdd, isRemoval, onRemove }) => {
   return (
-    <div>
+    <div className={styles.tracklist}>
       {tracks.map(track => (
         <Track
           key={track.id}
@@ -18,4 +19,3 @@ const Tracklist = ({ tracks = [], onAdd, isRemoval, onRemove }) => {
 };
 
 export default Tracklist;
-

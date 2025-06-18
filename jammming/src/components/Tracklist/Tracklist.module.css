@@ -1,5 +1,9 @@
 .tracklist {
+    display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
     overflow-y: scroll;
-    height: 20rem;
+    height: 40rem;
     padding-right: 1rem;
 }

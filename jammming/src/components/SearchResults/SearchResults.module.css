@@ -7,6 +7,15 @@
   box-shadow: 0 4px 2px 2px #000000;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: purple;
+  margin-top: 30px;
+  font-size: 1.5rem;
+}
+
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

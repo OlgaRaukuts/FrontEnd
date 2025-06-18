@@ -3,8 +3,8 @@ import Tracklist from '../Tracklist/Tracklist';
 import styles from './SearchResults.module.css'
 
 const SearchResults = ({ tracks, onAdd, onRemove, playlistTracks }) => (
-    <div>
-      <h2 className={styles.SearchResults}>Search Results</h2>
+    <div className={styles.SearchResults}>
+      <h2 className={styles.title}>Search Results</h2>
       <Tracklist
         tracks={tracks}
         onTrackAction={onAdd}

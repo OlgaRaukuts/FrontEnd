@@ -1,14 +1,39 @@
-.buttonSpotify {
-     margin-left: 1000px;
-     margin-top: 20px;
-     background-color:#aa58f1;
-     font-size: 1rem;
-     color: azure;
-     border-radius: 6px;
-
+.container {
+  padding: 20px;
+  min-height: 100vh;
+  background-image: url('/src/components/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.columns {
+  display: flex;
+  flex-direction: row;       /* Ensures horizontal layout */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;                 /* Space between columns */
+  flex-wrap: nowrap;         /* Prevent wrapping */
+  margin-top: 20px;
 }
 
-.buttonSpotify:hover {
-    background-color: #3315e1;
-    color: white;
-  }
+column {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;      
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  border-radius: 8px;
+}
+.subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: purple;
+  font-size: 2rem;
+  margin-top: 30px;
+}
+

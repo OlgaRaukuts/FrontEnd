@@ -19,15 +19,18 @@
       <div className={styles.trackContainer}>
         <div className={styles.trackInfo}>
         <h3 className={styles.trackName}>{track.name}</h3>
-        <div className={styles.trackInfo_lower}>
+        <div className={styles.trackInfoLower}>
         <p className={styles.trackDetails}>{track.artist} | {track.album}</p>
         </div>
         </div>
-        {isRemoval ? (
-        <button className={styles.trackButton.remove} onClick={handleRemove}>–</button>
-      ) : (
-        <button className={styles.trackButton.add} onClick={handleAdd}>+</button>
-      )}
+        <div>
+           {isRemoval ? (
+  <button className={styles.trackButtonAdd} onClick={handleRemove}>–</button>
+) : (
+  <button className={styles.trackButtonRemove} onClick={handleAdd}>+</button>
+)}
+        </div>
+       
       </div>
     );
   };

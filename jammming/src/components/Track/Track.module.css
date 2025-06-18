@@ -1,15 +1,15 @@
 .trackContainer {
 
-    background-color: rgba(169, 26, 235, 0.2);
-    flex: 1;
-    text-align: center;
-    color: white;
-    margin: 0 2rem;
-    border-radius: 1rem;
-    overflow: hidden;
+  background-color: rgba(180, 74, 229, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
   }
   
   .trackInfo {
+    flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr;
     background-color: rgba(255, 255, 255, 0.2);
@@ -19,11 +19,12 @@
     border-bottom-left-radius: .79rem;
   }
 
-  .trackInfo_lower {
+  .trackInfoLower {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 4px;
 }
   
   .trackName {
@@ -31,22 +32,38 @@
   }
   
   .trackDetails {
-    font-size: 0.875rem; /* text-sm */
-    color: #4B5563; /* Tailwind gray-600 */
-  }
-  
-  .trackButton {
-    font-size: 1.5rem; /* text-2xl */
+    font-size: 1.05rem; /* text-sm */
+    color: #e72ec8; /* Tailwind gray-600 */
     font-weight: bold;
-    background: none;
+
+  }
+    
+  .trackButtonAdd {
+  border:none;
+  border-radius: 30%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 52px;
+    height: 32px;
+    font-size: 2rem;
+    align-content: center;
+    background-color: #e72ec8a3;
+    color: #0fdcee; /* Tailwind green-600 */
+  }
+  
+  .trackButtonRemove {
     border: none;
-    cursor: pointer;
-  }
-  
-  .trackButton.add {
-    color: #16A34A; /* Tailwind green-600 */
-  }
-  
-  .trackButton.remove {
-    color: #DC2626; /* Tailwind red-600 */
+      border-radius: 30%;
+  cursor: pointer;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 52px;
+    height: 32px;
+    font-size: 2rem;
+    align-content: center;
+    background-color: #e72ec8a3;
+    color: #26dcd9; /* Tailwind red-600 */
   }

@@ -1,10 +1,10 @@
-
-import './App.css';
 import React, {useState} from 'react';
+import SearchBar from './components/SearchBar/SearchBar';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import Spotify from './components/Spotify';
 import styles from './App.module.css';
+import Header from './components/Header/Header';
 
   const App = () => {
    
@@ -47,78 +47,38 @@ const handleSearch = (query) => {
 
   
     return (
-      <div>
-      <h1 style={{display: "flex",
-    justifyContent: "center",
-    alignItems: "center", color: 'blueviolet'}}>Jammming 🎵</h1>
-    
-    
-    <div style={{ marginBottom: '20px',display: "flex",
-    justifyContent: "center",
-    alignItems: "center" }}>
-        <input
-          type="text"
-          placeholder="Enter a song name"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={() => handleSearch(query)} style={{marginLeft: '10px'}}>Search</button>
-      </div>
+      <div className={styles.container}>
+        <div className={styles.overlay}>
+          <Header />
+   <SearchBar query={query} onQueryChange={setQuery} onSearch={handleSearch} />
+      
+  <h2 className={styles.subtitle}>Search Results</h2>
+ 
+ <div className={styles.columns}>
+  <div className={styles.column}>
+    <Tracklist
+      tracks={searchResults}
+      onAdd={addTrack}
+      isRemoval={false}
+    />
+  </div>
 
-      <h2 style={{display: "flex",
-    justifyContent: "center",
-    alignItems: "center", color: 'purple'}}>Search Results</h2>
-      <Tracklist
-        tracks={searchResults}
-        onAdd={addTrack}
-        isRemoval={false}
-      />
+<div className={styles.column}>
+  <Playlist
+    name={playlistName}
+    tracks={playlistTracks}
+    onRemove={removeTrack}
+    onNameChange={updatePlaylistName}
+    onSave={savePlaylist}   
+  />
+</div>
 
-      <Playlist
-        name={playlistName}
-        tracks={playlistTracks}
-        onRemove={removeTrack}
-        onNameChange={updatePlaylistName}
-      />
-      <button onClick={savePlaylist} className={styles.buttonSpotify}>
-      Save to Spotify
-   </button>
+</div>
+        </div>
+    
     </div>
     );
   };
 
 export default App;
 
-
-/* hardcoded search 
-const filtered = MOCK_TRACKS.filter(track =>
-        track.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filtered);
-
-
-       const MOCK_TRACKS = [
-      {
-        id: 1,
-        name: 'Blinding Lights',
-        artist: 'The Weeknd',
-        album: 'After Hours',
-        uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b'
-      },
-      {
-        id: 2,
-        name: 'Levitating',
-        artist: 'Dua Lipa',
-        album: 'Future Nostalgia',
-        uri: 'spotify:track:39LLxExYz6ewLAcYrzQQyP'
-      },
-      {
-        id: 3,
-        name: 'As It Was',
-        artist: 'Harry Styles',
-        album: 'Harry’s House',
-        uri: 'spotify:track:6A2l7r0R73m5q5a0w5T6wA'
-      },
-    ];
-  
-      */
