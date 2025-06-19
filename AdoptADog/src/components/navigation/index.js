@@ -26,7 +26,7 @@ const Navigation = () => {
         <li key={'all'}>
           {/* These links should be NavLink component and add a special active class name if its an active link */}
           <NavLink to="/"
-            className='nav-link'
+            className={({isActive}) => `nav-link ${isActive? 'nav-link-active' : ''}`}
           >
             All Pets
           </NavLink>
