@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Navigate } from "react-router-dom"
 import Root, { ROUTES } from "./components/root/Root";
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
@@ -9,7 +9,18 @@ function App() {
   Define state variables for 
   contacts and appointments 
   */
+ const [contacts, setContact] = useState([]);
+ const [appointments, setAppointment] = useState([]);
 
+    const addContact = (contact) => {
+      if (contacts.find(t => t.id === contact.id)) return;
+      setPlaylistTracks([...contacts, contact]);
+    };
+
+        const addAppointment = (appointment) => {
+      if (appointments.find(t => t.id === appointment.id)) return;
+      setPlaylistTracks([...appointments, appointment]);
+    };
   /*
   Implement functions to add data to
   contacts and appointments
