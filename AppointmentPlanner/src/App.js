@@ -14,12 +14,12 @@ function App() {
 
     const addContact = (contact) => {
       if (contacts.find(t => t.id === contact.id)) return;
-      setPlaylistTracks([...contacts, contact]);
+      setContact([...contacts, contact]);
     };
 
         const addAppointment = (appointment) => {
       if (appointments.find(t => t.id === appointment.id)) return;
-      setPlaylistTracks([...appointments, appointment]);
+      setAppointment([...appointments, appointment]);
     };
   /*
   Implement functions to add data to
