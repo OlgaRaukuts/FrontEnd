@@ -1,0 +1,28 @@
+.header {                     
+  position: fixed;          
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;             
+
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  gap: 11px;
+
+  height: 80px;
+  padding: 0 2rem;          
+
+  background-color: #bbe9db;  
+  box-shadow: 0 1px 3px rgba(0,0,0,.10), 
+              0 1px 2px rgba(0,0,0,.06);
+}
+
+/* ---- HEADING ---- */
+.h1 {
+  margin: 0;                 
+  font-weight: 700;
+  font-size: 2.25rem;        
+  color: #757a79;         
+  background: transparent;   
+}
