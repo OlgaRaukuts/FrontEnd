@@ -16,7 +16,8 @@
   --bg:            #faf5e4;
   --border:        #dcdcdc;
   --text-primary:  #2c786c;
-  --text-secondary:#555;
+  --text-secondary:#2c786c;
+  --reddit-oranje: #ff6a38;
   --radius-sm:     4px;
   --radius-md:     8px;
   --shadow-sm:     0 1px 4px rgba(0,0,0,.08);
@@ -69,7 +70,7 @@
 .searchBar button {
   padding: 7px 14px;
   font-size: .9rem;
-  color: #fff;
+  color: #faf5e4;
   background: var(--reddit-orange);
   border: none;
   border-radius: var(--radius-sm);
@@ -172,7 +173,7 @@
 }
 
 .postCard button:hover {
-  background: #0060a8;
+  background: #17ecaf;
 }
 
 /* ════════════════════════════════════════
@@ -191,6 +192,15 @@
   font-size: .85rem;
 }
 
+a {
+  color: var(--reddit-oranje);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #9ed0e0; 
+}
 /* ════════════════════════════════════════
    ERROR & EMPTY STATES
    ════════════════════════════════════════ */

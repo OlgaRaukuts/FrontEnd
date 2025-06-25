@@ -1,19 +1,12 @@
-import styles from "../Header/Header.module.css";
-import React, { useState, useEffect } from 'react';
+import SearchBar from '../SearchBar/SearchBar';
 
-
-function Header(){
-
-
-    return(
-        <div> 
-            <header className={styles.header}>
-            <h1 className={styles.h1}>YOLA</h1>
-        </header>
-        </div>
-        
-    );
-
+function Header() {
+  return (
+    <header className="header">
+      <h1>Reddit Client</h1>
+      <SearchBar />
+    </header>
+  );
 }
 
 export default Header;
