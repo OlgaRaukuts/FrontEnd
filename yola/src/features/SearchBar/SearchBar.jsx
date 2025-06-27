@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setActiveSubreddit, fetchPosts } from '../Posts/postsSlice';
+import styles from "./SearchBar.module.css"
 
 function SearchBar() {
   const [term, setTerm] = useState('');
@@ -15,13 +16,14 @@ function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="searchBar">
+    <form onSubmit={handleSubmit} className={styles.search}>
       <input
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         placeholder="Search subreddit"
+        aria-label="Search posts"
       />
-      <button type="submit">Search</button>
+      <button type="submit" aria-label="Search" onClick={handleSubmit} >Search</button>
     </form>
   );
 }

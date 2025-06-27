@@ -9,8 +9,8 @@ function App() {
         <Header />
       </header>
 
-      <main className="main" style={{ padding: '24px' }}>
-        <section className="mainFeed">
+      <main>
+        <section >
           <PostsList />
         </section>
       </main>

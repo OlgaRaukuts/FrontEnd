@@ -23,7 +23,7 @@
   --shadow-sm:     0 1px 4px rgba(0,0,0,.08);
   --shadow-md:     0 4px 12px rgba(0,0,0,.12);
   --max-width:     1200px;
-  --sidebar-width: 260px;
+  --sidebar-width: 860px;
   font-family: "Segoe UI", Tahoma, sans-serif;
   background: var(--bg);
   color: var(--text-primary);
@@ -234,4 +234,18 @@ a:hover {
   .searchBar input {
     width: 140px;
   }
+}
+.feedWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainFeed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  justify-content: center; /* ensures inner grid centers */
+  max-width: 1000px;        /* prevents too-wide stretching */
+  width: 100%;
 }

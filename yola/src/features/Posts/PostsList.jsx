@@ -16,11 +16,14 @@ function PostsList() {
   if (posts.length === 0) return <p>No posts found.</p>;
 
   return (
-    <div className="mainFeed">
+    <div className='feedWrapper'>
+      <div className="mainFeed">
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}
     </div>
+    </div>
+    
   );
 }
 
