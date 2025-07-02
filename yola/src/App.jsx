@@ -1,20 +1,20 @@
+import React from 'react';
+import './App.css';
+import Home from './features/Home/Home';
 import Header from './features/Header/Header';
-import PostsList from './features/Posts/PostsList';
-import './styles.css';
+import Subreddits from './features/Subreddits/Subreddits';
 
 function App() {
   return (
-    <div>
-      <header>
-        <Header />
-      </header>
-
+    <>
+      <Header />
       <main>
-        <section >
-          <PostsList />
-        </section>
+        <Home />
       </main>
-    </div>
+      <aside>
+        <Subreddits />
+      </aside>
+    </>
   );
 }
 
